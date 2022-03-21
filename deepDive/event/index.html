@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<button>li 추가</button>
+		<ul id="fruits">
+			<li id="a">a</li>
+			<li id="b">b</li>
+			<li id="c">c</li>
+		</ul>
+		<p></p>
+		<script>
+			const $btn = document.querySelector("button");
+			const $fruits = document.querySelector("#fruits");
+			const $p = document.querySelector("p");
+
+			function addItem() {
+				const li = document.createElement("li");
+				li.setAttribute("id", "d");
+				li.textContent = "d";
+				$fruits.append(li);
+			}
+
+			function active({ target }) {
+				[...$fruits.children].forEach((li) => {
+					target === li && initParagraph(li.id);
+				});
+			}
+
+			function initParagraph(text) {
+				$p.textContent = `${text}`;
+			}
+
+			$btn.addEventListener("click", addItem);
+			$fruits.addEventListener("click", active);
+		</script>
+	</body>
+</html>

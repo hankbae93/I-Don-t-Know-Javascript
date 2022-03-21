@@ -1,0 +1,15 @@
+{
+	"devDependencies": {
+		"typescript": "^4.6.2"
+	},
+	"name": "zerocho-typescript",
+	"description": "",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"dev": "npx tsc app.ts --watch"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}

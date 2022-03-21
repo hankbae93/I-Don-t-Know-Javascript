@@ -25,3 +25,5 @@ if (a === b) {
 d.ts 는 타입만 쭉 적어놓은 파일로 모두 적어놓고 임포트하는식으로 사용한다.
 
 ts는 우리의 스크립트들이 들어있다.
+
+- tsconfig.json의 declaration 옵션 true 시 d.ts 파일 생성
