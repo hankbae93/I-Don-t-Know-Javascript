@@ -27,3 +27,44 @@ d.ts 는 타입만 쭉 적어놓은 파일로 모두 적어놓고 임포트하�
 ts는 우리의 스크립트들이 들어있다.
 
 - tsconfig.json의 declaration 옵션 true 시 d.ts 파일 생성
+
+# types
+
+```ts
+const a = {
+	a: "b",
+} as const;
+/*
+a: {
+    readonly a: "b";
+}
+*/
+
+type AddNext = (c: number) => string;
+
+function add(a: number, b: number): AddNext {
+	return (c: number) => {
+		return `${c + a + b}`;
+	};
+}
+
+console.log(add(1, 2)(6));
+
+const b: HTMLDivElement = document.createElement("div");
+// interface HTMLDivElement extends HTMLElement
+const d = b as HTMLElement;
+// const e = b as string; error
+```
+
+# as const
+
+리터럴 타입으로 고정해주고 싶을 때 사용
+
+```ts
+// Type '"hello"'
+let x = "hello" as const;
+// Type 'readonly [10, 20]'
+let y = [10, 20] as const;
+// Type '{ readonly text: "hello" }'
+let z = { text: "hello" } as const;
+```
