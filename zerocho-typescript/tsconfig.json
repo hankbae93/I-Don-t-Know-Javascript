@@ -5,5 +5,7 @@
 		"noImplicitThis": true,
 		"noImplicitReturns": true,
 		"strict": true
-	}
+	},
+	"exclude": [".js"],
+	"include": ["lecture.ts"]
 }

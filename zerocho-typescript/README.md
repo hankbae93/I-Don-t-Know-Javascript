@@ -68,3 +68,75 @@ let y = [10, 20] as const;
 // Type '{ readonly text: "hello" }'
 let z = { text: "hello" } as const;
 ```
+
+# interface
+
+```ts
+interface A {
+	a: string;
+}
+
+interface A {
+	b: number;
+}
+
+type B = {
+	a: string;
+};
+
+type B = {
+	b: string;
+}; // error
+```
+
+interface는 분해해도 하나로 합쳐진다.
+
+# keyof
+
+```ts
+interface Color {
+	white: "#fff";
+	black: "#000";
+}
+// keyof Color === 'white |
+const getColors = (colorname: keyof Color) => {
+	console.log(colorname);
+};
+
+getColors("white");
+getColors("blue"); // error
+```
+
+객체의 키값들만 받을 수 있게 타이핑할때 keyof를 활용한다.
+
+반대로 객체의 존재하는 value만 타이핑해줄수도잇다.
+
+```ts
+interface Color {
+	white: "#fff";
+	black: "#000";
+}
+//colorname : "#fff" | "#000"
+const getColors = (colorname: Color[keyof Color]) => {
+	console.log(colorname);
+};
+```
+
+# !
+
+타입시스템에서는 없다고 나오지만 일단 개발하는입장에서 무시하고싶을때 끝에 느낌표를 붙여준다.
+
+# this
+
+ts에서는 this를 핸들러함수 첫번째 인자로 타이핑을 해줘야 에러를 겪지않는다.
+
+```ts
+document.querySelectorAll(".btn").forEach((btn) => {
+	btn.addEventListener("click", function (this: HTMLButtonElement, e: Event) {
+		const myChoice = this.textContent;
+	});
+});
+```
+
+두번째로 타입스크립트의 한계라고 볼 수 있는데 d.ts에서 textContent가 string | null 타입으로 명시되지만
+실제로 우리는 null이 아닌걸 알 수 잇을때 as로 타입을 변환해준다.
