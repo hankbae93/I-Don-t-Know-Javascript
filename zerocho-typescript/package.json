@@ -1,9 +1,12 @@
 {
-  "name": "zerocho-typescript",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "devDependencies": {
-    "typescript": "^4.6.3"
-  }
+	"name": "zerocho-typescript",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"dev": "npx tsc -w"
+	},
+	"devDependencies": {
+		"typescript": "^4.6.3"
+	}
 }
